@@ -45,9 +45,9 @@ depth = depth[valid_depth_indices]
 X = np.multiply(depth.flatten(),  K_depth_inv @ pts)
 
 # Get color by projecting in rgb image
-Trgb_depth = np.array([[1.0, 0.0, 0.0, -optimized_params[0]],
-                       [0.0, 1.0, 0.0, -optimized_params[1]],
-                       [0.0, 0.0, 1.0, -optimized_params[2]]])
+Trgb_depth = np.array([[1.0, 0.0, 0.0, -optimized_params[2]],
+                       [0.0, 1.0, 0.0, -optimized_params[3]],
+                       [0.0, 0.0, 1.0, -optimized_params[4]]])
 
 uvs = K @ Trgb_depth @ np.vstack((X, np.ones(pts.shape[1])))
 uvs /= uvs[2, :]
